@@ -1,6 +1,6 @@
 <?php
 /*
- * tests
+ * Volxbibel RTF Export
  * Simon Bruechner, 29.08.2008
  */
 
@@ -10,7 +10,7 @@ function getRawWiki($url) {
 
     #echo $url;
 
-    $req1 =& new HTTP_Request('http://at.volxbibel.com/api.php?action=login&lgname='.WIKI_USER.'&lgpassword='.WIKI_PASSWORD.'&format=phpfm', array('allowRedirects' => true));
+    $req1 =& new HTTP_Request(WIKI_SERVER.'/api.php?action=login&lgname='.WIKI_USER.'&lgpassword='.WIKI_PASSWORD.'&format=phpfm', array('allowRedirects' => true));
     $req1->sendRequest();
     #echo '<pre>';
     #var_dump($req1->getResponseCookies());

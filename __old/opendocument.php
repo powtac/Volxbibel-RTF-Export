@@ -1,6 +1,6 @@
 <?php
 /*
- * tests
+ * Volxbibel RTF Export
  * Simon Bruechner, 29.08.2008
  */
 require_once 'OpenDocument.php'; // open document class

@@ -1,6 +1,6 @@
 <?php
 /*
- * tests
+ * Volxbibel RTF Export
  * Simon Bruechner, 30.08.2008
  */
 

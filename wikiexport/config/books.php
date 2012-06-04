@@ -1,12 +1,10 @@
 <?php
 /*
- * tests
+ * Volxbibel RTF Export
  * Simon Bruechner, 30.08.2008
  */
-
-error_reporting(E_ALL ^ E_DEPRECATED);
  
-// 'Config-Array with all books 
+// Config-Array with all books 
 $books = array(
     '1.Mose' => array(
         array('chapter' => '1.Mose 1'),
@@ -1056,4 +1054,3 @@ $books = array(
         array('chapter' => 'Maleachi 3'),
     ),
 );
-?>

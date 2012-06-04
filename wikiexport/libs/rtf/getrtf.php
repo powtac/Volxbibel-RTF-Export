@@ -14,7 +14,7 @@ $rtf->addColour("#000000");
 
 require_once dirname(__FILE__).'/../convertWiki.php';
 #$rtf->document = convertWiki('http://wiki:wiki@85.10.211.16/wiki/api.php?action=query&prop=revisions&titles=Hauptseite&rvprop=timestamp|user|comment|content&format=php');
-$rtf->document = convertWiki('http://at.volxbibel.com/api.php?prop=revisions&action=query&titles=2.Mose_1&rvprop=timestamp|user|comment|content&format=php');
+$rtf->document = convertWiki(WIKI_SERVER.'api.php?prop=revisions&action=query&titles=2.Mose_1&rvprop=timestamp|user|comment|content&format=php');
 #$rtf->document = '<em>EM</em><i>I</i>';
 #var_dump($rtf->document);exit;
 $rtf->document =str_replace("</p>\n", '</p>', $rtf->document);
