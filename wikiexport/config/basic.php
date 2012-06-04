@@ -1,6 +1,7 @@
 <?php
-/**
+/*
  * Basic functions for the export
+ * Simon Bruechner, 2008, 2012
  */
 
 

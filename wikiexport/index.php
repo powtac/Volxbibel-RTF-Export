@@ -1,7 +1,7 @@
 <?php
 /*
  * Volxbibel RTF Export
- * Simon Bruechner, 30.08.2008
+ * Simon Bruechner, 2008, 2012
  */
 
 require_once dirname(__FILE__).'/config/bootstrap.php';

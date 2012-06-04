@@ -1,7 +1,7 @@
 <?php
 /*
  * Volxbibel RTF Export
- * Simon Bruechner, 29.08.2008
+ * Simon Bruechner, 2008, 2012
  */
 
 

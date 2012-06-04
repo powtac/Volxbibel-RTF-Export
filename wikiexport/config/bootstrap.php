@@ -1,7 +1,6 @@
 <?php
 /*
- * Volxbibel Wiki RTF Export
- * 
+ * Volxbibel RTF Export
  * Simon Brüchner 2012
  */
 
