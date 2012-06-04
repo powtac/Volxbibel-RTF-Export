@@ -5,8 +5,14 @@ Rename `/config/config.template.php` into `config.php` and set the MediaWiki ser
 Add `WIKI_USER` and `WIKI_PASSWORD` for a wiki user which has the rights to export data from the wiki.
 
 ### Requirements
-PHP > 5
-PEAR Packages: Text_Wiki, HTTP_Request and all dependecies.
+* PHP > 5
+
+PEAR Packages and all their dependencies: 
+* HTTP_Request
+* Text_Wiki
+* Text_Wiki_Mediawiki
+
+They can be installed by `pear install --force --alldeps Text_Wiki_Mediawiki`.
 
 
 ### Support or Contact
