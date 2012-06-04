@@ -11,4 +11,4 @@ Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
 Simon Brüchner, 2008, 2012
 
 ### License
-MIT
+[MIT](http://de.wikipedia.org/wiki/MIT-Lizenz)
