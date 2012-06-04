@@ -4,9 +4,9 @@
  * Simon Bruechner, 30.08.2008
  */
 
-require_once dirname(dirname(__FILE__)).'/config/books.php';
-require_once dirname(__FILE__).'/config.php';
-require_once dirname(__FILE__).'/basic.php';
+require_once dirname(__FILE__).'/config/books.php';
+require_once dirname(__FILE__).'/config/config.php';
+require_once dirname(__FILE__).'/config/basic.php';
 
 
 
@@ -142,19 +142,19 @@ if (isset($_REQUEST[URL_PARAM_PAGE_NAME])) {
             $rawWiki = $header.$rawWiki;
             
             // HTML
-            require_once dirname(__FILE__).'/../../convertWiki.php';
+            require_once dirname(__FILE__).'/libs/convertWiki.php';
             $html = convertWiki($rawWiki);
             
             // RTF
-            require_once dirname(__FILE__).'/../../rtf/class_rtf.php';
+            require_once dirname(__FILE__).'/libs/rtf/class_rtf.php';
             
-            $rtf = new rtf(dirname(__FILE__).'/../../rtf/rtf_config.php');
+            $rtf = new rtf(dirname(__FILE__).'/libs/rtf/rtf_config.php');
             $rtf->setPaperSize(5);
             $rtf->setPaperOrientation(1);
             $rtf->setDefaultFontFace(0);
             $rtf->setDefaultFontSize(24);
             $rtf->setAuthor("Martin Dreyer");
-            $rtf->setOperator("me@noginn.com");
+            $rtf->setOperator("me@example.com");
             $rtf->setTitle("Volxbibel");
             $rtf->addColour("#000000");
             $rtf->document = $html;
