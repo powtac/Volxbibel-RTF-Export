@@ -15,7 +15,10 @@ function http($url) {
     static $c = NULL;
 
     if ($c === NULL) {
-        $req1 =& new HTTP_Request(WIKI_SERVER.'api.php?action=login&lgname='.WIKI_USER.'&lgpassword='.WIKI_PASSWORD.'&format=php', array('allowRedirects' => true));
+        
+        $apiUrl = WIKI_SERVER.'api.php?action=login&lgname='.WIKI_USER.'&lgpassword='.WIKI_PASSWORD.'&format=php';
+
+        $req1 =& new HTTP_Request($apiUrl, array('allowRedirects' => true));
         $req1->sendRequest();
         $cookiesToAtach = array('volxbibel_db_atUserID', 'volxbibel_db_atUserName', 'volxbibel_db_atToken');
 
