@@ -8,7 +8,7 @@ Add `WIKI_USER` and `WIKI_PASSWORD` for a wiki user which has the rights to expo
 Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
 
 ### Author
-Simon Brüchner, 2008, 2012
+[Simon Brüchner](http://www.bruechner.de) 2008, 2012
 
 ### License
 [MIT](http://de.wikipedia.org/wiki/MIT-Lizenz)
