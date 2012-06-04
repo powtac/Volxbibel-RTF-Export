@@ -1,7 +1,7 @@
 ### How to use
-Rename `/config/config.template.php` into `config.php` and set the MediaWiki server name into `WIKI_SERVER`, with `http://` but no trailing `/`. 
-
-Add `WIKI_USER` and `WIKI_PASSWORD` for a wiki user which has the rights to export data from the wiki.
++ Rename `/config/config.template.php` into `config.php`.
++ Set the constant `WIKI_SERVER`, to the domain and path to your MediaWiki installation, with `http://` but no trailing `/`. 
++ Set `WIKI_USER` and `WIKI_PASSWORD` for a wiki user which has the rights to export data from the MediaWiki.
 
 ### Requirements
 * PHP > 5
