@@ -10,7 +10,7 @@ PEAR Packages and all their dependencies, see `/config/bootstrap.php`:
 * HTTP_Request
 * Text_Wiki_Mediawiki
 
-They can be installed by `pear install --force --alldeps HTTP_RequestText_Wiki_Mediawiki`.
+They can be installed by `pear install --force --alldeps HTTP_Request Text_Wiki_Mediawiki`.
 
 ### Support or Contact
 Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
