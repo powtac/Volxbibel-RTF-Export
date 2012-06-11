@@ -8,10 +8,9 @@
 
 PEAR Packages and all their dependencies, see `/config/bootstrap.php`: 
 * HTTP_Request
-* Text_Wiki
 * Text_Wiki_Mediawiki
 
-They can be installed by `pear install --force --alldeps Text_Wiki_Mediawiki`.
+They can be installed by `pear install --force --alldeps HTTP_RequestText_Wiki_Mediawiki`.
 
 ### Support or Contact
 Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
@@ -20,4 +19,4 @@ Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
 [Simon Brüchner](http://www.bruechner.de) 2008, 2012
 
 ### License
-[MIT](http://de.wikipedia.org/wiki/MIT-Lizenz) for all the code I coded. There is also a rtf library in the libs folder but I don't know where it is from...
+[MIT](http://de.wikipedia.org/wiki/MIT-Lizenz) for all the code I coded. There is also a [rtf](https://github.com/powtac/Volxbibel-RTF-Export/tree/master/wikiexport/libs/rtf) library in the libs folder but I don't know where it is from...
