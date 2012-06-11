@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Volxbibel RTF Export : Export Tool to export contents of the Volxbibel Wiki (or any other MediaWiki) into a readable RTF (Rich Text Format) file. " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Volxbibel RTF Export</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/powtac/Volxbibel-RTF-Export">View on GitHub</a>
+
+          <h1 id="project_title">Volxbibel RTF Export</h1>
+          <h2 id="project_tagline">Export Tool to export contents of the Volxbibel Wiki (or any other MediaWiki) into a readable RTF (Rich Text Format) file. </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/powtac/Volxbibel-RTF-Export/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/powtac/Volxbibel-RTF-Export/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>How to use</h3>
+
+<ul>
+<li>Rename <code>/config/config.template.php</code> into <code>config.php</code>.</li>
+<li>Set the constant <code>WIKI_SERVER</code>, to the domain and path to your MediaWiki installation, with <code>http://</code> but no trailing <code>/</code>. </li>
+<li>Set <code>WIKI_USER</code> and <code>WIKI_PASSWORD</code> for a wiki user which has the rights to export data from the MediaWiki.</li>
+</ul><h3>Requirements</h3>
+
+<ul>
+<li>PHP &gt; 5</li>
+</ul><p>PEAR Packages and all their dependencies, see <code>/config/bootstrap.php</code>: </p>
+
+<ul>
+<li>HTTP_Request</li>
+<li>Text_Wiki_Mediawiki</li>
+</ul><p>They can be installed by <code>pear install --force --alldeps HTTP_Request Text_Wiki_Mediawiki</code>.</p>
+
+<h3>Support or Contact</h3>
+
+<p>Please fill in a <a href="https://github.com/powtac/Volxbibel-RTF-Export/issues">Issue</a>.</p>
+
+<h3>Author</h3>
+
+<p><a href="http://www.bruechner.de">Simon Brüchner</a> 2008, 2012</p>
+
+<h3>License</h3>
+
+<p><a href="http://de.wikipedia.org/wiki/MIT-Lizenz">MIT</a> for all the code I coded. There is also a <a href="https://github.com/powtac/Volxbibel-RTF-Export/tree/master/wikiexport/libs/rtf">rtf</a> library in the libs folder but I don't know where it is from...</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Volxbibel RTF Export maintained by <a href="https://github.com/powtac">powtac</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
