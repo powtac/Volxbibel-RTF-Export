@@ -20,3 +20,21 @@ Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
 
 ### License
 [MIT](http://de.wikipedia.org/wiki/MIT-Lizenz) for all the code I coded. There is also a [rtf](https://github.com/powtac/Volxbibel-RTF-Export/tree/master/wikiexport/libs/rtf) library in the libs folder but I don't know where it is from...
+### Module overview
+The project is organized in a few main directories:
+
+```
+Volxbibel-RTF-Export
+├── wikiexport
+│   ├── config       # configuration and helper functions
+│   ├── libs         # bundled libraries such as the RTF exporter
+│   ├── index.php    # main export script
+│   └── jesusrockt.php  # helper for Jesus Rockt chapters
+├── __old            # archived scripts
+└── README.md
+```
+
+The `wikiexport/config` folder contains PHP scripts for setting up the
+exporter and listing the available books. The `libs/rtf` folder bundles
+the third‑party library used to create RTF files. `index.php` builds the
+RTF document using data pulled from the MediaWiki API.
