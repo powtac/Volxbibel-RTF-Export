@@ -7,13 +7,14 @@
 require_once dirname(__FILE__).'/config/bootstrap.php';
 
 
-function getAllChaptersOfBook($bookName) {
+function getAllChaptersOfBook($bookTitle) {
     global $books;
-    foreach ($books[$bookName] as $value) {
-        $return[] = $value['chapter'];
+    $chapterList = array();
+    foreach ($books[$bookTitle] as $value) {
+        $chapterList[] = $value['chapter'];
     }
-    
-    return $return;
+
+    return $chapterList;
 }
 
 
@@ -78,7 +79,6 @@ if (!isset($_REQUEST[URL_PARAM_PAGE_NAME])) {
 }
 
 if (isset($_REQUEST[URL_PARAM_PAGE_NAME])) {
-    $rawWikiCollection = '';
 
     $url = makeUrl($_REQUEST[URL_PARAM_PAGE_NAME]);
 
@@ -111,63 +111,63 @@ if (isset($_REQUEST[URL_PARAM_PAGE_NAME])) {
             // rawHTML
             foreach ($pages as $key => $page) {
 
-                $rawArray[$pages[$key]['title']] = $pages[$key]['revisions'][0]['*'];
-                
+                $rawChapters[$pages[$key]['title']] = $pages[$key]['revisions'][0]['*'];
+
                 // only for sorting right!
-                $sorted[$pages[$key]['title']] = $pages[$key]['title'];
-            }
-            
-            // natsort works only this way with this second array $sorted.
-            natsort($sorted);
-
-
-            foreach ($rawArray as $key => $value) {
-                $sorted[$key] = $value;
+                $sortedTitles[$pages[$key]['title']] = $pages[$key]['title'];
             }
 
-            foreach ($sorted as $key => $value) {
-                $rawWikiArray[] = '<h1>'.$key.'</h1>'.$value;
+            // natsort works only this way with this second array $sortedTitles.
+            natsort($sortedTitles);
+
+
+            foreach ($rawChapters as $key => $value) {
+                $sortedTitles[$key] = $value;
+            }
+
+            foreach ($sortedTitles as $key => $value) {
+                $rawWikiSections[] = '<h1>'.$key.'</h1>'.$value;
             }
 
 
-            
-            $rawWiki = implode(RTF_PAGE_BREAK_PATTERN, $rawWikiArray);
+
+            $rawWikiContent = implode(RTF_PAGE_BREAK_PATTERN, $rawWikiSections);
             
             $header  = 'Export aus dem at.volxbibel.com-Wiki.<br />';
             $header .= 'Am '.date('d.m').'<span />.'.date('Y').' um '.date('H:i').' Uhr.<br /><br />';
             
-            $rawWiki = $header.$rawWiki;
+            $rawWikiContent = $header.$rawWikiContent;
             
             // HTML
             require_once dirname(__FILE__).'/libs/convertWiki.php';
-            $html = convertWiki($rawWiki);
+            $chapterHtml = convertWiki($rawWikiContent);
             
             // RTF
             require_once dirname(__FILE__).'/libs/rtf/class_rtf.php';
             
-            $rtf = new rtf(dirname(__FILE__).'/libs/rtf/rtf_config.php');
-            $rtf->setPaperSize(5);
-            $rtf->setPaperOrientation(1);
-            $rtf->setDefaultFontFace(0);
-            $rtf->setDefaultFontSize(24);
-            $rtf->setAuthor("Martin Dreyer");
-            $rtf->setOperator("me@example.com");
-            $rtf->setTitle("Volxbibel");
-            $rtf->addColour("#000000");
-            $rtf->document = $html;
+            $rtfDocument = new rtf(dirname(__FILE__).'/libs/rtf/rtf_config.php');
+            $rtfDocument->setPaperSize(5);
+            $rtfDocument->setPaperOrientation(1);
+            $rtfDocument->setDefaultFontFace(0);
+            $rtfDocument->setDefaultFontSize(24);
+            $rtfDocument->setAuthor("Martin Dreyer");
+            $rtfDocument->setOperator("me@example.com");
+            $rtfDocument->setTitle("Volxbibel");
+            $rtfDocument->addColour("#000000");
+            $rtfDocument->document = $chapterHtml;
 
             #$rtf->document = str_replace("</p>\n", '</p>', $rtf->document);    // for what?         
-            $rtf->document = str_replace(htmlentities('<span />'), '', $rtf->document);            
-            $rtf->document = str_replace(htmlentities('<div class="kapiteluebersicht">'), '', $rtf->document);            
-            $rtf->document = str_replace(htmlentities('&rsquo;'), '"', $rtf->document);            
+            $rtfDocument->document = str_replace(htmlentities('<span />'), '', $rtfDocument->document);
+            $rtfDocument->document = str_replace(htmlentities('<div class="kapiteluebersicht">'), '', $rtfDocument->document);
+            $rtfDocument->document = str_replace(htmlentities('&rsquo;'), '"', $rtfDocument->document);
             #$rtf->document = str_replace(htmlentities('&hellip;'), '...', $rtf->document);            
            
 			
 			
-            $rtf->parseDocument();
+            $rtfDocument->parseDocument();
             
             if (!headers_sent()) {
-                $rtf->getDocument();
+                $rtfDocument->getDocument();
             } else {
                 die ('headers...');   
             }

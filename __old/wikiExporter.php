@@ -10,6 +10,8 @@ class wikiExporter {
     var $_rawWiki;
     var $_html;
     var $_rtf;
+    var $_wikiPageNames = array();
+    var $_errors = array();
 
     function setWikiPageNames($listOfWikiPageNames = array()) {
         if (is_array($listOfWikiPageNames)) {
