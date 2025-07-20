@@ -12,34 +12,34 @@
  * @return <type> 
  */
 function http($url) {
-    static $c = NULL;
+    static $cookies = null;
 
-    if ($c === NULL) {
+    if ($cookies === null) {
         
         $apiUrl = WIKI_SERVER.'api.php?action=login&lgname='.WIKI_USER.'&lgpassword='.WIKI_PASSWORD.'&format=php';
 
-        $req1 =& new HTTP_Request($apiUrl, array('allowRedirects' => true));
-        $req1->sendRequest();
-        $cookiesToAtach = array('volxbibel_db_atUserID', 'volxbibel_db_atUserName', 'volxbibel_db_atToken');
+        $loginRequest = new HTTP_Request($apiUrl, array('allowRedirects' => true));
+        $loginRequest->sendRequest();
+        $cookiesToAttach = array('volxbibel_db_atUserID', 'volxbibel_db_atUserName', 'volxbibel_db_atToken');
 
-        foreach ($req1->getResponseCookies() as $cookie) {
+        foreach ($loginRequest->getResponseCookies() as $cookie) {
             foreach ($cookie as $key => $value) {
                 if ($key === 'name') {
-                    if (in_array($value, $cookiesToAtach)) {
-                        $c[$value] = $cookie['value'];
+                    if (in_array($value, $cookiesToAttach)) {
+                        $cookies[$value] = $cookie['value'];
                     }
                 }
             }
         }
     }
 
-    $req =& new HTTP_Request($url, array('allowRedirects' => true));
-    foreach ($c as $key => $value) {
-        $req->addCookie($key, $value);
+    $httpRequest = new HTTP_Request($url, array('allowRedirects' => true));
+    foreach ($cookies as $key => $value) {
+        $httpRequest->addCookie($key, $value);
     }
 
-    $req->sendRequest();
-    $return = $req->getResponseBody();
+    $httpRequest->sendRequest();
+    $return = $httpRequest->getResponseBody();
 
     return $return;
 }
@@ -95,7 +95,7 @@ function convertWiki($text) {
 
     $text = html_entity_decode($text);
 
-    $wiki = &new Text_Wiki_Mediawiki($rules);
+    $wiki = new Text_Wiki_Mediawiki($rules);
     $wiki->setRenderConf('Xhtml', 'Url', 'target', '');
     $wiki->setRenderConf('Xhtml', 'wikilink', 'view_url', 'http://'.$_SERVER['SERVER_NAME'].'/');
 

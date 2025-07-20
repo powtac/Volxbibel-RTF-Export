@@ -1,22 +1,60 @@
-### How to use
-+ Rename `/config/config.template.php` into `config.php`.
-+ Set the constant `WIKI_SERVER`, to the domain and path to your MediaWiki installation, with `http://` but no trailing `/`. 
-+ Set `WIKI_USER` and `WIKI_PASSWORD` for a wiki user which has the rights to export data from the MediaWiki.
+```
+ __      __   _   _          _     _      ____  _______ ______
+ \ \    / /__| |_| |__   ___| |__ (_)_ __| __ )|__   __|  ____|
+  \ \/\/ / _ \ __| '_ \ / _ \ '_ \| | '__|  _ \   | |  | |__
+   \_/\_/  __/ |_| | | |  __/ |_) | | |  | |_) |  | |  |  __|
+            \___|\__|_| |_|\___|_.__/|_|_|  |____/   |_|  |_____|
 
-### Requirements
-* PHP > 5
+           Volxbibel Wiki -> RTF Export
+```
 
-PEAR Packages and all their dependencies, see `/config/bootstrap.php`: 
-* HTTP_Request
-* Text_Wiki_Mediawiki
+# Volxbibel RTF Export
 
-They can be installed by `pear install --force --alldeps HTTP_Request Text_Wiki_Mediawiki`.
+Dieses Repository enthaelt ein PHP-Skript, das Inhalte aus einer MediaWiki-Installation sammelt und in ein Rich-Text-Format-Dokument (RTF) umwandelt. Ziel ist es, komplette Kapitel der Volxbibel offline oder zum Ausdrucken bereitzustellen.
 
-### Support and Contact
-Please fill in a [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues).
+## Zweck
+Der Exporter ruft die definierten Seiten ueber die MediaWiki-API ab, wandelt das Wiki-Markup mit `Text_Wiki_Mediawiki` in HTML um und erzeugt daraus mithilfe einer RTF-Bibliothek ein zusammenhaengendes Dokument. So lassen sich einzelne Buecher der Volxbibel komfortabel weiterverarbeiten.
 
-### Author
-[Simon Brüchner](http://www.bruechner.de) 2008, 2012
+## Technologien
+- PHP (>=5)
+- [PEAR HTTP_Request](http://pear.php.net/package/HTTP_Request) fuer die HTTP-Kommunikation
+- [PEAR Text_Wiki_Mediawiki](http://pear.php.net/package/Text_Wiki_Mediawiki) zur Umwandlung von Wiki-Syntax in HTML
+- Eine einfache PHP-basierte RTF-Bibliothek in `wikiexport/libs/rtf`
 
-### License
-[MIT](http://de.wikipedia.org/wiki/MIT-Lizenz) for all the code I coded. There is also a [rtf](https://github.com/powtac/Volxbibel-RTF-Export/tree/master/wikiexport/libs/rtf) library in the libs folder but I don't know where it is from...
+## Installation
+1. `wikiexport/config/config.template.php` nach `config.php` kopieren.
+2. In `config.php` `WIKI_SERVER` auf die Basis-URL des Wikis ohne abschliessenden `/` setzen.
+3. `WIKI_USER` und `WIKI_PASSWORD` mit einem Benutzer fuellen, der die noetigen Leserechte besitzt.
+4. Benoetigte PEAR-Pakete installieren:
+
+```bash
+pear install --force --alldeps HTTP_Request Text_Wiki_Mediawiki
+```
+
+## Voraussetzungen
+- PHP 5 oder neuer
+- PEAR-Pakete `HTTP_Request` und `Text_Wiki_Mediawiki`
+
+## Nutzung
+`wikiexport/index.php` kann im Browser oder per Kommandozeile aufgerufen werden. Das Skript liest die in `wikiexport/config/books.php` hinterlegten Kapitel und bietet ein fertiges RTF zum Download an.
+
+## Projektstruktur
+```text
+Volxbibel-RTF-Export
+├── wikiexport
+│   ├── config       # Konfiguration und Hilfsfunktionen
+│   ├── libs         # eingebundene Bibliotheken, u.a. die RTF-Bibliothek
+│   ├── index.php    # Haupteinstieg zum Export
+│   └── jesusrockt.php  # Beispiel fuer einzelne Kapitel
+├── __old            # Archiv alter Skripte
+└── README.md
+```
+Die Konfigurationsdateien regeln, welche Buecher exportiert werden. Unter `libs/rtf` liegt die Bibliothek zur Erstellung der RTF-Dateien.
+
+## Lizenz
+Der Grossteil des Codes steht unter der [MIT-Lizenz](http://de.wikipedia.org/wiki/MIT-Lizenz). Die RTF-Bibliothek im Ordner `libs/rtf` stammt von Dritten und kann eine abweichende Lizenz besitzen.
+
+## Kontakt
+Fragen oder Fehler bitte als [Issue](https://github.com/powtac/Volxbibel-RTF-Export/issues) melden.
+
+Autor: [Simon Bruechner](http://www.bruechner.de) (2008, 2012)
